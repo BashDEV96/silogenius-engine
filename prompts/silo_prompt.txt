@@ -1,0 +1,177 @@
+# SEO Content Silo Generator
+
+## Do not generate any comments or extra formatting. PSV only.
+
+## PROMPT
+
+I am providing you with a strict Rule Set. Based on these rules, I need you to generate a complete SEO Content Silo for the topic: {main_keyword}.
+
+Act as an expert SEO Strategist and apply your knowledge of the topic to make informed decisions. Use your understanding of common search intent, content gaps, related subtopics, and semantically relevant terms to determine keyword variations, article types, NLP keywords, and supporting article topics. Aim to cover the subject with genuine topical authority.
+
+### Instructions:
+1. **Create 1 Pillar Article** and a **cluster of Supporting Articles** (minimum 3) to cover topical authority. **Do not limit yourself to a fixed number;** generate as many supporting articles as required to fully cover the subject.
+2. **Strictly follow the constraints** in the Rule Set for Types, Sizes, and Formatting.
+3. **Do not generate any comments or extra formatting. PSV only.**
+
+---
+
+# SILO GENERATOR RULES
+
+## Silo Architecture
+* **CRITICAL:** The **first line of your output** must be this header row, copied exactly as written, with no modifications, no extra formatting, and no exceptions:
+Main Keyword | Article Type | Title | NLP Keywords | Article Size | Tone of voice | Point of view | Text Readability | Structure Elements | Hook | URL | Category | Tags | Image Count | Meta Description
+* Generate **1 Pillar Article** covering the main topic.
+* Generate a **cluster of Supporting Articles** (minimum 3) covering relevant sub-topics.
+* Supporting article count is flexible; generate as many as needed to fully cover topical authority.
+
+## Main Keyword Rules
+* The **first row (Pillar article)** must use the **exact main keyword** provided by the user.
+* All **supporting articles** must use a **natural long-tail variation** of the main keyword.
+* Variations must follow the pattern: **"{main_keyword} + short modifier."**
+* Modifiers must be simple, relevant, and reflect real user intent.
+* **Do NOT** repeat the exact main keyword except for the Pillar.
+* **Do NOT** generate irrelevant or unnatural variations.
+* Each variation must be unique.
+
+## Article Type (Allowed Values)
+* Pillar
+* How-to guide
+* Listicle
+* Product review
+* News
+* Comparison
+* Case study
+* Opinion piece
+* Tutorial
+* Roundup post
+* Q&A page
+
+## Listicle Rules
+* Listicle → numbered list format. IMPORTANT: The number in the title must 
+  be realistic for the Article Size. X-Small: max 5 items, Small: max 10 items, 
+  Medium: max 15 items, Large: max 20 items. Never exceed these counts.
+  
+## Title Rules
+* One title per row.
+* Must be SEO/SERP-friendly.
+* Avoid colons, dashes, or parentheses unless absolutely necessary.
+* Titles should be clear, natural, and human-readable.
+
+## Keywords (NLP)
+* Generate **10–15 NLP keywords** per article.
+* Keywords must be relevant, natural, and semantically connected to the article topic.
+* No duplicates across articles unless logically required.
+
+## Article Size & Structure (Allowed Values)
+* **X-Small:** 800–1200 words, 3–5 H2
+* **Small:** 1200–1500 words, 4–6 H2
+* **Medium:** 1500–2500 words, 6–8 H2 (Optional H3s)
+* **Large:** 2500–3500 words, 8–10 H2 (Mandatory H3s)
+* **Pillar:** 3000–5000 words, 10–14 H2 (Mandatory H3s)
+
+The **article size column** must output the full descriptive string exactly as defined above.
+
+**Examples:**
+* **Good:** `Pillar 3000–5000 words, 10–14 H2 (Mandatory H3s)`
+* **Good:** `Small 1200–1500 words, 4–6 H2`
+* **Good:** `Medium 1500–2500 words, 6–8 H2 (Optional H3s)`
+* **Bad:** `Pillar`
+* **Bad:** `Small`
+* **Bad:** `X-Small`
+
+## Image Count Rules
+* Image count is determined by article size.
+* The first image is always the **Featured Image**.
+* **X‑Small:** 2 images total (1 Featured + 1 Inline)
+* **Small:** 3 images total (1 Featured + 2 Inline)
+* **Medium:** 4 images total (1 Featured + 3 Inline)
+* **Large:** 5 images total (1 Featured + 4 Inline)
+
+## Tone of Voice (Allowed Values)
+* Friendly
+* Professional
+* Informational
+* Transactional
+* Inspirational
+* Neutral
+* Witty
+* Casual
+* Authoritative
+* Encouraging
+* Persuasive
+* Poetic
+
+## Point of View (Allowed Values)
+* First person singular
+* First person plural
+* Second person
+* Third person
+* None
+
+## Text Readability (Allowed Values)
+* 5th grade
+* 6th grade
+* 7th grade
+* 8th & 9th grade (Recommended)
+* 10th–12th grade
+* College
+* Professional
+
+## STRUCTURE ELEMENTS (Smart Selection)
+* AI must select **3–5** relevant structural elements based on article type.
+* **Hook is OPTIONAL** - do not include it in every article.
+* Allowed structure elements:
+  * Conclusion
+  * Tables
+  * H3
+  * Lists
+  * Italics
+  * Quotes
+  * Key Takeaways
+  * FAQ
+  * Bold
+  * **Hook** ← *OPTIONAL*
+
+## HOOK COLUMN - CONDITIONAL LOGIC
+This column depends **entirely** on whether `"Hook"` was selected in **Structure Elements**.
+
+* **IF `"Hook"` IS in your Structure Elements list:**
+  * Select **ONE** hook type from: `Question`, `Statistical or Fact`, `Quotation`, `Anecdotal or Story`, `Personal or Emotional`
+  * **Example Structure Elements:** `"H3, Lists, Hook, Conclusion, FAQ"`
+  * **Example Introductory Hook:** `"Question"`
+
+* **IF `"Hook"` is NOT in your Structure Elements list:**
+  * **MUST** output: `"None"`
+  * **Example Structure Elements:** `"H3, Tables, Lists, Conclusion"`
+  * **Example Introductory Hook:** `"None"`
+
+**CRITICAL:** Do not specify a hook type if Hook is **not** listed in Structure Elements. The two columns must match.
+
+### Examples:
+**CORRECT:**
+* `Structure Elements: "Hook, H3, Lists, Conclusion"` | `Introductory Hook: "Statistical or Fact"`
+* `Structure Elements: "Tables, H3, Lists, FAQ"` | `Introductory Hook: "None"`
+
+**WRONG:**
+* `Structure Elements: "Tables, H3, Lists, FAQ"` | `Introductory Hook: "Question"` ← *Hook not in structure!*
+* `Structure Elements: "Hook, Lists, Conclusion, H3"` | `Introductory Hook: "None"` ← *Hook IS in structure!*
+
+## URL Rules
+* **Base URL:**
+  * Default: `http://localhost/wordpress/`
+* **URL Structure:**
+  * Base URL + slugified title
+  * Slugs must be lowercase, hyphen‑separated, no special characters.
+
+## Taxonomy Strategy
+* **Category:**
+  * Hierarchical format (e.g., `Main Topic > Sub‑Topic`).
+  * Okay to re-use sub-topics.
+* **Tags:**
+  * 3–5 comma‑separated tags based on NLP keywords.
+
+## Meta Description Rules
+* Generate a concise **140–160 character** meta description for each article.
+* Must be human‑readable, natural, and **include the main keyword**.
+* No keyword stuffing.
+* No promotional language ("best ever," "must read," etc.).
